@@ -32,7 +32,7 @@ services:
   
   stable-diffusion-webui:
     image: universonic/stable-diffusion-webui:minimal
-    command: --no-half --no-half-vae --precision full --api
+    command: --no-half --no-half-vae --precision full --api --skip-torch-cuda-test
     restart: unless-stopped
     ports:
       - "8084:8080/tcp"
