@@ -31,35 +31,11 @@ services:
       - ollama:/root/.ollama
     devices:
       - /dev/dri:/dev/dri
-  
-  stable-diffusion-webui:
-    image: universonic/stable-diffusion-webui:minimal
-    container_name: stable-diffusion-webui
-    command: --no-half --no-half-vae --precision full --api --skip-torch-cuda-test
-    restart: unless-stopped
-    ports:
-      - "8084:8080/tcp"
-    volumes:
-      - stable-webui:/app/stable-diffusion-webui
-    cap_drop:
-      - ALL
-    cap_add:
-      - NET_BIND_SERVICE
-    deploy:
-      mode: global
-      placement:
-        constraints:
-          - "node.labels.iface != extern"
-      restart_policy:
-        condition: unless-stopped
-    devices:
-      - /dev/dri:/dev/dri
 
 
 volumes:
   ollama:
   open-webui:
-  stable-webui:
 
 networks:
   default:
