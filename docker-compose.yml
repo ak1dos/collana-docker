@@ -39,3 +39,8 @@ services:
 volumes:
   ollama:
   open-webui:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
