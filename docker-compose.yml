@@ -27,13 +27,8 @@ services:
     command: serve
     volumes:
       - ollama:/root/.ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              device_ids: ['all']
-              capabilities: [gpu]
+    devices:
+      - /dev/dri:/dev/dri
 
 
 volumes:
